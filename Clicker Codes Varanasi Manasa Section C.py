@@ -2,7 +2,7 @@ from machine import Pin
 import neopixel
 import time
 
-# -------- BUTTONS --------
+# -------- BUTTONS -------- 
 start_btn = Pin(13, Pin.IN, Pin.PULL_UP)
 p1_btn = Pin(14, Pin.IN, Pin.PULL_UP)
 p2_btn = Pin(27, Pin.IN, Pin.PULL_UP)
@@ -28,7 +28,7 @@ p2_life3 = Pin(25, Pin.OUT)
 p1_indicator = Pin(22, Pin.OUT)
 p2_indicator = Pin(23, Pin.OUT)
 
-# -------- GAME VARIABLES --------
+# -------- GAME VARIABLES -------- (Makes it easier to go through it)
 p1_score = 0
 p2_score = 0
 p1_lives = 0
@@ -39,7 +39,7 @@ reaction_active = False
 reaction_start = 0
 
 
-# -------- FUNCTIONS --------
+# -------- FUNCTIONS --------(I used global here as I wanted to define a variable outside the function cuz It kept showing error inside)
 
 def reset_game():
     global p1_score, p2_score, p1_lives, p2_lives
@@ -88,7 +88,7 @@ def update_lives():
     p2_life3.value(p2_lives >= 3)
 
 
-# -------- START --------
+# -------- START -------- (Using while true loop cuz I need this system to work without breaking cuz start and reset with work)
 reset_game()
 
 while True:
@@ -131,7 +131,7 @@ while True:
                 reaction_active = False
 
         else:
-            # Time expired → lose life
+            # Time expired  lose life (FIX IT ALL)
             if p1_active:
                 p1_lives += 1
             if p2_active:
@@ -150,4 +150,5 @@ while True:
         # Turn OFF indicators when round ends
         if not reaction_active:
             p1_indicator.off()
+
             p2_indicator.off()
