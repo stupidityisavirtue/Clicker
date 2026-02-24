@@ -2,33 +2,27 @@ from machine import Pin
 import neopixel
 import time
 
-# -------- BUTTONS -------- 
 start_btn = Pin(13, Pin.IN, Pin.PULL_UP)
 p1_btn = Pin(14, Pin.IN, Pin.PULL_UP)
 p2_btn = Pin(27, Pin.IN, Pin.PULL_UP)
 
-# -------- IR SENSORS --------
 ir1 = Pin(35, Pin.IN)
 ir2 = Pin(32, Pin.IN)
 
-# -------- NEOPIXEL --------
 pixels = neopixel.NeoPixel(Pin(4), 16)
 
-# -------- PLAYER 1 LIFE LEDS --------
 p1_life1 = Pin(26, Pin.OUT)
 p1_life2 = Pin(15, Pin.OUT)
 p1_life3 = Pin(5, Pin.OUT)
 
-# -------- PLAYER 2 LIFE LEDS --------
 p2_life1 = Pin(21, Pin.OUT)
 p2_life2 = Pin(18, Pin.OUT)
 p2_life3 = Pin(25, Pin.OUT)
 
-# -------- INDICATOR LEDS --------
 p1_indicator = Pin(22, Pin.OUT)
 p2_indicator = Pin(23, Pin.OUT)
 
-# -------- GAME VARIABLES -------- (Makes it easier to go through it)
+#GAME VARIABLES  (Makes it easier to go through it)
 p1_score = 0
 p2_score = 0
 p1_lives = 0
@@ -39,7 +33,7 @@ reaction_active = False
 reaction_start = 0
 
 
-# -------- FUNCTIONS --------(I used global here as I wanted to define a variable outside the function cuz It kept showing error inside)
+#FUNCTIONS I used global here as I wanted to define a variable outside the function cuz It kept showing error inside)
 
 def reset_game():
     global p1_score, p2_score, p1_lives, p2_lives
@@ -88,7 +82,7 @@ def update_lives():
     p2_life3.value(p2_lives >= 3)
 
 
-# -------- START -------- (Using while true loop cuz I need this system to work without breaking cuz start and reset with work)
+# START  (Using while true loop cuz I need this system to work without breaking cuz start and reset with work)
 reset_game()
 
 while True:
@@ -152,3 +146,4 @@ while True:
             p1_indicator.off()
 
             p2_indicator.off()
+
